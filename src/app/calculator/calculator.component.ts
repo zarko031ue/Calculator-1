@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-calculator',
@@ -6,35 +7,40 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
-  
-  number1: number;
-  number2: number;
   result : number;
+  singUpForm: FormGroup
 
   constructor() { }
 
   ngOnInit(): void {
+    this.singUpForm = new FormGroup({
+      'number1': new FormControl(null, Validators.required),
+      'number2': new FormControl(null, Validators.required)
+    });
+  }
+
+  onSubmit(){
+    console.log(this.singUpForm);
   }
 
   add(){
-    this.result = this.number1 + this.number2;
+    this.result = this.singUpForm.value['number1'] + this.singUpForm.value['number2'];
   }
   
   subtraction(){
-    this.result = this.number1 - this.number2;
+    this.result = this.singUpForm.value['number1'] - this.singUpForm.value['number2'];
   }
 
   multiply(){
-    this.result = this.number1 * this.number2;
+    this.result = this.singUpForm.value['number1'] * this.singUpForm.value['number2'];
   }
 
   devide() {
-    this.result = this.number1 / this.number2;
+    this.result = this.singUpForm.value['number1'] / this.singUpForm.value['number2'];
   }
 
   allClear(){
-    this.number1 = null;
-    this.number2 = null
+    this.singUpForm.reset()
     this.result = null;
    }
 
