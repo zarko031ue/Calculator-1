@@ -1,4 +1,4 @@
-input, button, p{
+input, button, p, span{
     margin: 20px auto;
     
 }
@@ -16,5 +16,10 @@ p{
     margin: 20px auto;
     height: 150px;
     background-color: rgb(245, 247, 245);
-    width: 500px;
+    width: 600px;
+}
+
+
+input.ng-touched.ng-invalid{
+    border: 1px solid red;
 }
